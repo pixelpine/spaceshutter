@@ -3,7 +3,7 @@ using System;
 using System.IO;
 using System.Numerics;
 
-public partial class player : Node2D
+public partial class player : CharacterBody2D
 
 {
 	[Export] // Export the variable to be seen in the godot editor
@@ -31,6 +31,8 @@ public partial class player : Node2D
 		bool left = Input.IsActionPressed("ui_left");
 		bool right = Input.IsActionPressed("ui_right");
 		Godot.Vector2 directionalInput = new Godot.Vector2((right ? 1 : 0)-(left ? 1 : 0), (down ? 1 : 0) - (up ? 1 : 0));
-		Position += directionalInput * speed * (float)delta; 
+		// Position += directionalInput * speed * (float)delta; 
+		Velocity = directionalInput * speed;
+		MoveAndSlide();
 	}
 }

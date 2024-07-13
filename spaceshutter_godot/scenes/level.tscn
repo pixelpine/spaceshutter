@@ -1,10 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://2mrfvp77q84a"]
+[gd_scene load_steps=8 format=3 uid="uid://2mrfvp77q84a"]
 
+[ext_resource type="Script" path="res://scenes/level.cs" id="1_3b01n"]
 [ext_resource type="Texture2D" uid="uid://cbu5ccrpq5kbs" path="res://assets/Backgrounds/darkPurple.png" id="1_xy84r"]
 [ext_resource type="PackedScene" uid="uid://cicmkurkaqgos" path="res://scenes/player.tscn" id="2_qrmyy"]
-[ext_resource type="PackedScene" uid="uid://b7cbgocc3vf4" path="res://scenes/meteor.tscn" id="4_apqi5"]
+[ext_resource type="PackedScene" uid="uid://b7cbgocc3vf4" path="res://scenes/Meteor.tscn" id="4_apqi5"]
+[ext_resource type="Script" path="res://scenes/Timer_x.cs" id="4_y04q0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1w1al"]
+size = Vector2(63, 758)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fdv4u"]
+size = Vector2(1440, 64)
 
 [node name="Level" type="Node2D"]
+script = ExtResource("1_3b01n")
 
 [node name="BG" type="Sprite2D" parent="."]
 position = Vector2(644, 364.5)
@@ -12,6 +21,36 @@ scale = Vector2(5.07812, 2.91016)
 texture = ExtResource("1_xy84r")
 
 [node name="Player" parent="." instance=ExtResource("2_qrmyy")]
+position = Vector2(690, 341)
 
 [node name="Meteor" parent="." instance=ExtResource("4_apqi5")]
-position = Vector2(198, 128)
+position = Vector2(334, 234)
+
+[node name="Borders" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Borders"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/StaticBody2D"]
+position = Vector2(1313, 359)
+shape = SubResource("RectangleShape2D_1w1al")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Borders"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/StaticBody2D2"]
+position = Vector2(-30, 359)
+shape = SubResource("RectangleShape2D_1w1al")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Borders"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/StaticBody2D3"]
+position = Vector2(640, -36)
+shape = SubResource("RectangleShape2D_fdv4u")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Borders"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/StaticBody2D4"]
+position = Vector2(625, 758)
+shape = SubResource("RectangleShape2D_fdv4u")
+
+[node name="Timer" type="Timer" parent="."]
+script = ExtResource("4_y04q0")
