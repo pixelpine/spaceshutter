@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cicmkurkaqgos"]
+
+[ext_resource type="Script" path="res://scenes/player.cs" id="1_pf465"]
+[ext_resource type="Texture2D" uid="uid://dblwupvdma33y" path="res://assets/PNG/playerShip1_blue.png" id="1_qe046"]
+
+[node name="Player" type="Node2D"]
+position = Vector2(2.08165e-12, 2.08165e-12)
+script = ExtResource("1_pf465")
+
+[node name="PlayerImage" type="Sprite2D" parent="."]
+texture = ExtResource("1_qe046")
